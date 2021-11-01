@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         while ($row = mysqli_fetch_array($existing_email_result)) {
 
             if (!password_verify($password, $row["userpass"])) {
-                $errors[] = "Invalid Password";
+                $errors[] = "Invalid password. Try again.";
             } else {
                 session_start();
 

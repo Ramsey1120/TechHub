@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "Username must be between 3 and 35 characters long";
     }
 
-    if (strlen($username) < 8 or strlen($username) > 100) {
+    if (strlen($e_mail) < 8 or strlen($email) > 100) {
         $errors[] = "Email must be between 8 and 100 characters long";
     }
 
