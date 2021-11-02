@@ -13,14 +13,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $errors = [];
 
-    $existing_email = "SELECT * FROM user WHERE email='$email'";
+    $existing_email = "SELECT * FROM user WHERE email='$e_mail'";
     $existing_email_result = mysqli_query($conn,$existing_email) or die(mysqli_error($conn));
 
     if (strlen($username) < 3 or strlen($username) > 35) {
         $errors[] = "Username must be between 3 and 35 characters long";
     }
 
-    if (strlen($e_mail) < 8 or strlen($email) > 100) {
+    if (strlen($e_mail) < 8 or strlen($e_mail) > 100) {
         $errors[] = "Email must be between 8 and 100 characters long";
     }
 
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            foreach ($errors as $errror) {
+            foreach ($errors as $error) {
                 echo '<div class="error">' . $error . '</div>';
             }     
         }
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="confirmation">Password confirmation</label>
     <input type="password" class="form-input" name="confirmation" placeholder="Enter password confirmation" required><br>
     
-    <small>Already have an account? <a href="login.php">Sign up here</a></small>
+    <small>Already have an account? <a href="login.php">Log In here</a></small>
     <input type="submit" value="Sign up" class="button submit">
 </form>
 </body>

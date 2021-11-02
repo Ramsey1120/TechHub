@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $errors = [];
 
-    $existing_email = "SELECT * FROM user WHERE email='$email'";
+    $existing_email = "SELECT * FROM user WHERE email='$e_mail'";
     $existing_email_result = mysqli_query($conn,$existing_email) or die(mysqli_error($conn));
 
     if (mysqli_num_rows($existing_email_result) === 0) {
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-} else { ?> 
+} ?> 
 
 <form  class="form auth" action="" method="post">
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            foreach ($errors as $errror) {
+            foreach ($errors as $error) {
                 echo '<div class="error">' . $error . '</div>';
             }     
         }
@@ -59,4 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 </html>
 
-<?php } ?>
