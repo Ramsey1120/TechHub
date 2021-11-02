@@ -10,12 +10,13 @@ if (isset($id)) {
 $all_posts = "SELECT * FROM post ORDER BY date_posted DESC";
 $all_posts_result = mysqli_query($conn, $all_posts) or die(mysqli_error($conn));
 
+echo "<h1 class='home-title'>TechHub Home</h1>";
 
 while ($row = mysqli_fetch_array($all_posts_result)) {
     $post_id = $row["postID"];
     $title  = ucfirst($row["title"]);
     $content = ucfirst(substr($row["content"],0,275));
-    $date_posted = substr($row["date_posted"],10);
+    $date_posted = substr($row["date_posted"],0,10);
     $user_id = $row["userID"];
 
     
@@ -23,20 +24,19 @@ while ($row = mysqli_fetch_array($all_posts_result)) {
     $post_author_result = mysqli_query($conn,$post_author);
     $author = mysqli_fetch_array($post_author_result);
 
-    echo "<h1 class='home-title'>TechHub Home</h1>";
 
     if (strlen($content) > 100) {
         echo "<article class='post'> 
         <p class='postTitle'>" . $title . "</p>" .
-        " <a href='userProfile.php?user'" . $user_id . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
-        "<p class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
-        "<div class='date'>" . $date_posted . "</div></article>"; 
+        "<a href='userProfile.php?user=" . $author["username"] . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
+        "<div class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
+        "<div class='date'>Uploaded the: <b>" . $date_posted . "</b></div></article>"; 
     } else {
         echo "<article class='post'> 
         <p class='postTitle'>" . $title . "</p>" .
-        "<a href='userProfile.php?user'" . $user_id . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
-        "<p class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
-        "<div class='date'>Uploaded on the: <b>" . $date_posted . "</b></div></article>"; 
+        "<a href='userProfile.php?user=" . $author["username"] . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
+        "<div class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
+        "<div class='date'>Uploaded the: <b>" . $date_posted . "</b></div></article>"; 
     }
 }
 

@@ -1,6 +1,6 @@
 <?php
 require_once "include/header.php";
-require_once "inlcude/connect.php";
+require_once "include/connect.php";
 
 ?>
 
@@ -22,7 +22,7 @@ if (mysqli_num_rows($all_my_post_result) > 0) {
                 <div class='postTitle'>" . ucfirst($row["title"]) . "</div>
                 <div class='postContent'>" . ucfirst(substr($row["content"], 0, 250)) . 
                 "...<a href='post.php?id=" . $row["postID"] . "'>Read More</a></div>
-                <div class='date'> &middot " . substr($row["date_posted"], 0, 10) . "&middot</div>
+                <div class='date'>Uploaded the: " . substr($row["date_posted"], 0, 10) . "</div>
                 <a href='include/deletePost.php?id=" . $row["postID"] . "'>
                 <img src='images/red-bin.jpg' class='deleteIcon'></a></div>";
             mysqli_close($conn);        

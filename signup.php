@@ -39,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($errors)) {
         $password = password_hash($password, PASSWORD_BCRYPT);
-        $register = "INSERT INTO user(username,email,userpass) VALUES('$username','$e_mail','$password')";
+        $now = date("Y-m-d H:i:s");
+        $register = "INSERT INTO user(username,email,userpass,date_joined) VALUES('$username','$e_mail','$password','$now')";
         $register_result = mysqli_query($conn,$register) or die(mysqli_error($conn));
         header("Location: login.php");
     }

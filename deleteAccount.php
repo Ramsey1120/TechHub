@@ -1,7 +1,7 @@
 <?php
 
 require_once "include/header.php";
-require_once "inlcude/connect.php";
+require_once "include/connect.php";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -9,19 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $delete_user_result = mysqli_query($conn,$delete_user);
 
     session_destroy();
-    header("Location: home.php");
+    header("Location: index.php");
 } ?>
 
 
-<form action="" method="post">
-    <a href="profile.php"><img src="#" alt="#"> Back button</a>
+<form class="form delete" method="post">
 
-    <legend>Delete Account</legend>
+    <legend class="legend">Delete Account</legend>
 
-    <p class="del warning">Are you sure you want to delete your account</p>
-    <p>THIS ACTION CANNNOT BE UNDONE</p>
+    <p class="del-warning">Are you sure you want to delete your account?<br>THIS ACTION CANNNOT BE UNDONE!</p>
 
-    <input type="submit" value="Delete">
+    <input class="button submit del" type="submit" value="Delete">
     
 </form>
 

@@ -210,10 +210,12 @@ input[type="submit"]:hover {
     border-radius: 10px;
     border: solid 2px hsl( var(--clr-main) / .8 );
     background-color: hsl(var(--clr-white) / .9);
+    transition: transform 250ms ease-in-out;
 }
 
-.form-input:focus, .form-input:hover {
+.form-input:focus-visible, .form-input:hover {
     outline: solid 1px hsl(var(--clr-main));
+    transform: translateY(-3px);
 }
 
 small {
@@ -226,7 +228,12 @@ small a {cursor: pointer;}
 small a:hover {text-decoration: underline;}
 
 .submit {
-    width: 100%;
+  width: 100%;
+  transition: transform 250ms ease-in-out;
+}
+
+.submit:hover {
+  transform: translateY(-3px);
 }
 
 .error {
@@ -256,6 +263,7 @@ small a:hover {text-decoration: underline;}
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px hsl(var(--clr-grey));
   background-color: hsl(var(--clr-white));
+
 }
 
 .postTitle {
@@ -263,12 +271,12 @@ small a:hover {text-decoration: underline;}
   color: hsl(var(--clr-main));
   border-bottom: solid 1px hsl(var(--clr-grey));
   width: 70%;
-  margin: 0 auto 1.1em;
+  margin: 0 auto 1em;
   padding: .2em;
-  font-size: 1.375rem;
+  font-size: 1.775rem;
 }
 
-.postContent, .date, .author {
+.date {
   margin: 1.2em 1em;
   padding-inline: 1em;
 }
@@ -282,6 +290,13 @@ small a:hover {text-decoration: underline;}
   color: hsl(var(--clr-main));
 }
 
+.postContent {
+  max-width: 65ch;
+  word-break: break-all;
+  text-align: center;
+  margin: 1.5em auto .5em;
+}
+
 .date {
   min-width: 10%;
   max-width: max-content;
@@ -289,17 +304,18 @@ small a:hover {text-decoration: underline;}
   margin-inline: auto 0;
 }
 
-
 .aside {
   background-color: hsl(var(--clr-white));
   width: 30%;
-  margin-left: auto;
   border: solid 3px hsl(var(--clr-main));
   border-radius: 10px;
   text-align: center;
-  margin-inline: auto 1em;
   padding: 1em;
+  margin: 1em;
   font-size: 1.05rem;
+  position: fixed;
+  top: 20%;
+  right: 0%;
 }
 
 .aside > .legend {
@@ -309,4 +325,62 @@ small a:hover {text-decoration: underline;}
 
 .addPost {
   float: right;
+  margin: 1em;
+}
+
+.fullPost {
+  font-size: 1.1rem;
+}
+
+.fullPost .postTitle {
+  font-size: 2.5rem;
+}
+
+.fullPost .postContent {
+  margin-inline: 1em;
+}
+
+.fullPost .author {
+  color: hsl(var(--clr-main));
+}
+
+
+.profile {
+  width: 25%;
+  margin: 1em auto;
+  font-size: 1.25rem;
+}
+
+.profile p {
+  text-align: center;
+  margin: 1em;
+}
+
+.viewPosts {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+  background-color: hsl(var(--clr-red) / .85);
+  border: solid 1px hsl(var(--clr-red) / .85);
+}
+
+.viewPosts:nth-of-type(1) {
+  background-color: hsl(var(--clr-main));
+  border: solid 1px hsl(var(--clr-main));
+
+}
+
+.del-warning {
+  color: hsl(var(--clr-red) / .85);
+  margin: 1.25em 0;
+  text-align: center;
+}
+
+.del {
+  background-color: hsl(var(--clr-red) / .85);
+  border: solid 1px hsl(var(--clr-red) / .85);
+}
+
+.delete {
+  margin: 2em auto;
 }

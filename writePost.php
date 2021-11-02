@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($content) < 5 or strlen($content) > 2500) {$errors[] = "Your post must be between 5 and 25000 characters long";}
 
     if (empty($errors)) {
-        $now = date("Y-m-d H:i:s");
+    $now = date("Y-m-d H:i:s");
         $insert_post = "INSERT INTO post (title,content,userID,date_posted) VALUES ('$title','$content','$id','$now')";
         $insert_post_result = mysqli_query($conn,$insert_post) or die(mysqli_error($conn));
 

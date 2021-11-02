@@ -6,7 +6,6 @@ $post_id = $_GET["id"];
 $post = "SELECT * FROM post WHERE postID = '$post_id'";
 $post_result = mysqli_query($conn, $post) or die(mysqli_query($error));
 
-
 while ($row = mysqli_fetch_array($post_result)) {
     $post_id = $row["postID"];
     $title = ucfirst($row["title"]);
@@ -18,10 +17,11 @@ while ($row = mysqli_fetch_array($post_result)) {
     $author_result = mysqli_query($conn, $author) or die(mysqli_query($error));
     $post_author = mysqli_fetch_array($author_result);
 
-    echo "<div class='post'><div class='postTitle'>" . $title . "</div>
-            <div class='postCotent'> " . $content . "</div>
+    echo "<div class='post fullPost'>
+    <div class='postTitle'>" . $title . "</div>
+            <div class='postContent'> " . $content . "</div>
             <a href='#' class='author'> " . $post_author["username"] . " <a/>
-            <div class='date'> &middot" . $date_posted . " &middot</div></div>";            
+            <div class='date'>Uploaded the: " . $date_posted . "</div></div>";            
 }
 
 mysqli_close($conn);

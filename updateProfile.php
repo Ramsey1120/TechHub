@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-<form action="" method="post">
+<form class="" method="post">
     <legend class="form-legend">Join us Today!</legend>
     <?php
         if ($_SERVER["REQUEST_METHOD"]) {
@@ -69,10 +69,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }     
         }
     ?>
+    <label for="username">New username:</label>
     <input type="username" class="form-input" name="username" placeholder="Enter your new username" value="<?php echo $name ?>" required><br>
+
+    <label for="email">New e-mail:</label>
     <input type="email" class="form-input" name="email" placeholder="Enter your new e-mail"  value="<?php echo $emai ?>" required><br>
+
+    <label for="password">New password:</label>
     <input type="password" class="form-input" name="password" placeholder="Enter password" required><br>
+
+    <label for="confirmation">Enter your password confirmation:</label>
     <input type="password" class="form-input" name="confirmation" placeholder="Enter password confirmation" required><br>
+    
     <small>Already have an account? <a href="login.php">Sign up here</a></small>
     <input type="submit" value="Sign up" class="button submit">
 </form>
