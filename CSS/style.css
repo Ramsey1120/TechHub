@@ -43,10 +43,15 @@ html,html:focus-within {
 /* improve text rendering times on the page, at the cost of making the text appear less 'fancy' */
 /* switch this to optimizeLegibility for nicer looking text in the sections that need it */
 body {
-font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-rendering: optimizeSpeed;
   line-height: 1.55;
   min-height: 100vh;
+  color: rgb(59, 59, 59);
+  background-image: url(../images/bgc.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 
@@ -147,7 +152,8 @@ input[type="submit"]:hover {
 
 .nav {
     --gap: 0em;
-    background-color: hsl( var(--clr-dark) / .8 );
+    background-color: hsl( var(--clr-dark) / .95 );
+    border-bottom: solid 1px hsl(var(--clr-grey));
 }
 
 .nav a {
@@ -180,6 +186,7 @@ input[type="submit"]:hover {
 }
 
 .form {
+    background-color: hsl(var(--clr-white));
     border: solid 1px hsl(var(--clr-grey));
     border-radius: 10px;
     width: 27.5%;
@@ -201,7 +208,7 @@ input[type="submit"]:hover {
     padding: 1em .5em;
     margin-bottom: 1.75em;
     border-radius: 10px;
-    border: solid 1px hsl( var(--clr-dark) / .8 );
+    border: solid 2px hsl( var(--clr-main) / .8 );
     background-color: hsl(var(--clr-white) / .9);
 }
 
@@ -233,4 +240,73 @@ small a:hover {text-decoration: underline;}
 
 .writePost {
     width: 40%;
+}
+
+.home-title {
+  color: hsl(var(--clr-white));
+  margin: .5em;
+  font-size: 3rem;
+}
+
+.post {
+  margin: 1em;
+  padding: 1em;
+  width: 50%;
+  border: solid 3px hsl(var(--clr-main));
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px hsl(var(--clr-grey));
+  background-color: hsl(var(--clr-white));
+}
+
+.postTitle {
+  text-align: center;
+  color: hsl(var(--clr-main));
+  border-bottom: solid 1px hsl(var(--clr-grey));
+  width: 70%;
+  margin: 0 auto 1.1em;
+  padding: .2em;
+  font-size: 1.375rem;
+}
+
+.postContent, .date, .author {
+  margin: 1.2em 1em;
+  padding-inline: 1em;
+}
+
+.author {
+  font-size: 1.1rem;
+  color: hsl( var(--clr-dark) / .8 );
+}
+
+.author b, .date b {
+  color: hsl(var(--clr-main));
+}
+
+.date {
+  min-width: 10%;
+  max-width: max-content;
+  margin-bottom: 0;
+  margin-inline: auto 0;
+}
+
+
+.aside {
+  background-color: hsl(var(--clr-white));
+  width: 30%;
+  margin-left: auto;
+  border: solid 3px hsl(var(--clr-main));
+  border-radius: 10px;
+  text-align: center;
+  margin-inline: auto 1em;
+  padding: 1em;
+  font-size: 1.05rem;
+}
+
+.aside > .legend {
+  font-size: 1.75rem;
+  margin: .25em;
+}
+
+.addPost {
+  float: right;
 }

@@ -4,9 +4,7 @@ require_once "include/header.php";
 require_once "include/connect.php";
 
 if (isset($id)) {
-    echo "<div class='addPost'><a class='button' href='writePost.php'>Write a post</a></div>";
-} else {
-    echo "<div class='addPost'><a class='button' href='signup.php'>Join us today</a></div>";
+    echo "<a class='button addPost' href='writePost.php'>Write a post</a>";
 }
 
 $all_posts = "SELECT * FROM post ORDER BY date_posted DESC";
@@ -25,23 +23,31 @@ while ($row = mysqli_fetch_array($all_posts_result)) {
     $post_author_result = mysqli_query($conn,$post_author);
     $author = mysqli_fetch_array($post_author_result);
 
+    echo "<h1 class='home-title'>TechHub Home</h1>";
+
     if (strlen($content) > 100) {
         echo "<article class='post'> 
         <p class='postTitle'>" . $title . "</p>" .
+        " <a href='userProfile.php?user'" . $user_id . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
         "<p class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
-        "<div class='date'>" . $date_posted . "</div> 
-        <a href='userProfile.php?user'" . $user_id . "' class='author'>" . $author["username"] ."</a></article>";
+        "<div class='date'>" . $date_posted . "</div></article>"; 
     } else {
         echo "<article class='post'> 
         <p class='postTitle'>" . $title . "</p>" .
+        "<a href='userProfile.php?user'" . $user_id . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
         "<p class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
-        "<div class='date'>" . $date_posted . "</div> 
-        <a href='userProfile.php?user'" . $user_id . "' class='author'>" . $author["username"] ."</a></article>";
+        "<div class='date'>Uploaded on the: <b>" . $date_posted . "</b></div></article>"; 
     }
 }
 
 mysqli_close($conn);
 ?>
+
+
+<aside class="aside">
+    <legend class="legend">Welcome to TechHub!</legend>
+    <p>Welcome to TechHub where you can share your tech knowledge witht the world!</p>
+</aside>
 
 </body>
 </html>
