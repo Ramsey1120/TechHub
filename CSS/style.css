@@ -1,0 +1,170 @@
+/* ------------------ */
+/* CSS Resets */
+/* ------------------ */
+
+
+/* Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins from element */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* removing default list styling */
+ul,ol {
+  list-style: none;
+}
+
+/* removing default link styling */
+a {
+  text-decoration: none;
+}
+
+/* add smooth scroll to the page */
+html,html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* improve text rendering times on the page, at the cost of making the text appear less 'fancy' */
+/* switch this to optimizeLegibility for nicer looking text in the sections that need it */
+body {
+font-family: 'Montserrat', sans-serif;
+  text-rendering: optimizeSpeed;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+
+/* make image a block element and responsive */
+img,
+picture,
+small {
+  max-width: 100%;
+  display: block;
+}
+
+/* Make form elements inherit font styling */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Remove outlines from form inputs */
+input,
+button,a,
+input:focus,
+textarea:focus, textarea:hover, textarea:active 
+{
+  outline: none;
+}
+
+/* give submit buttons a cursor pointer when hovered */
+input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+
+/* Remove all animations, transitions and smooth scrolling for users who toggle 'prefers reduced motion' ON */
+@media (prefers-reduced-motion: reduce) {
+  
+  html,html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------ */
+/* Custom Properties */
+/* ------------------ */
+:root {
+    --clr-dark: 0 0% 0%;
+    --clr-white: 0 0% 100%;
+    --clr-grey: 0 0% 50%;
+    --clr-main: 203 99% 40%; /* main accent color */
+}
+
+
+/* ------------------ */
+/*  Utiity Classes */
+/* ------------------ */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.container {
+  padding-inline: 2em; /* Arbitrary Value*/
+  margin-inline: auto;
+  width: var(--container-width,70%);
+  max-width: var(--max-width,80rem);
+}
+
+/* ------------------ */
+/*  Main styling */
+/* ------------------ */
+
+.nav {
+    --gap: 0em;
+    background-color: hsl( var(--clr-dark) / .8 );
+}
+
+.nav a {
+    color: hsl(var(--clr-white));
+    padding: 1em 2em;
+    font-size: 1.1rem;
+    border-right: solid 1px hsl(var(--clr-grey));
+    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+}
+
+.nav a:hover {
+    background-color: hsl(var(--clr-main));
+    font-size: 1.1rem;
+    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;;
+}
+
+.nav a:nth-of-type(1) {
+    color: hsl(var(--clr-main));
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.nav a:nth-of-type(1):hover {
+    color: hsl( var(--clr-dark) / .8 );
+}
+
+
+
+.button {
+
+}

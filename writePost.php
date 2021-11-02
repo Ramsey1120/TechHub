@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }     
         }
     ?>
-
+    <?php  phpinfo(); ?>
     <input type="text" class="form-input" name="title" placeholder="Enter a title"><br>
     <textarea name="content" class="form-input" cols="40" rows="10" placeholder="Write your post here (max 2500 Characters)"></textarea>
     <br><input type="submit" value="Upload" class="button">

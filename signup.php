@@ -1,7 +1,7 @@
 <?php 
 require_once "include/header.php";
-require_once "inlcude/connect.php";
-require_once "inlcude/sanitise.php";
+require_once "include/connect.php";
+require_once "include/sanitise.php";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form action="" method="post">
     <legend class="form-legend">Join us Today!</legend>
     <?php
-        if ($_SERVER["REQUEST_METHOD"]) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             foreach ($errors as $errror) {
                 echo '<div class="error">' . $error . '</div>';
             }     

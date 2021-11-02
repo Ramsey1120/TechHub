@@ -1,7 +1,7 @@
 <?php 
 require_once "include/header.php";
-require_once "inlcude/connect.php";
-require_once "inlcude/sanitise.php";
+require_once "include/connect.php";
+require_once "include/sanitise.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $e_mail = sanitise($_POST["email"]);
@@ -33,12 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-}
-?>
+} else { ?> 
 
+<p>hello</p>
 <form action="" method="post">
+
     <?php
-        if ($_SERVER["REQUEST_METHOD"]) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
             foreach ($errors as $errror) {
                 echo '<div class="error">' . $error . '</div>';
             }     
@@ -52,3 +53,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
+<?php } ?>

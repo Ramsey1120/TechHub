@@ -76,5 +76,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <small>Already have an account? <a href="login.php">Sign up here</a></small>
     <input type="submit" value="Sign up" class="button submit">
 </form>
-</body>
+</body> 
 </html>

@@ -2,7 +2,7 @@
 require_once "include/header.php";
 require_once "inlcude/connect.php";
 require_once "inlcude/sanitise.php";
-
+phpinfo();
 $author_id = $GET["user"];
 
 $posts_no = "SELECT COUNT(userID) AS Num FROM post WHERE post.userID='$author_id'";
@@ -26,6 +26,7 @@ $user = mysqli_fetch_array($user_details_result);
 
     Joined Date: <?php echo date('d F Y', strtotime($user["date_joined"])) ?>
 
+    <input type="submit" value="hello">
 </form>
 </body>
 </html>
