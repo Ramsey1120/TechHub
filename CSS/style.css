@@ -130,6 +130,16 @@ input[type="submit"]:hover {
   max-width: var(--max-width,80rem);
 }
 
+.button {
+    padding: 1em 2em;
+    background-color: hsl(var(--clr-main));
+    border: solid 1px hsl(var(--clr-main));
+    color: hsl(var(--clr-white));
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+
 /* ------------------ */
 /*  Main styling */
 /* ------------------ */
@@ -164,7 +174,45 @@ input[type="submit"]:hover {
 }
 
 
+.form {
+    border: solid 1px hsl(var(--clr-grey));
+    border-radius: 10px;
+    width: 27.5%;
+    margin: 1em;
+    padding: 1em;
+}
 
-.button {
+.legend {
+    text-align: center;
+    color: hsl(var(--clr-main));
+    font-weight: bold;
+    font-size: 1.45rem;
+    margin: .2em 0 1em;
+}
 
+
+.form-input {
+    width: 100%;
+    padding: 1em .5em;
+    margin-bottom: 1.75em;
+    border-radius: 10px;
+    border: solid 1px hsl( var(--clr-dark) / .8 );
+    background-color: hsl(var(--clr-white) / .9);
+}
+
+.form-input:focus, .form-input:hover {
+    outline: solid 1px hsl(var(--clr-main));
+}
+
+small {
+    text-align: center;
+    font-size: .95rem;
+    margin: 1em;
+}
+
+small a {cursor: pointer;}
+small a:hover {text-decoration: underline;}
+
+.submit {
+    width: 100%;
 }

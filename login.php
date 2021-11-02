@@ -35,8 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else { ?> 
 
-<p>hello</p>
-<form action="" method="post">
+<form  class="form auth" action="" method="post">
+
+    <legend class="legend">Welcome Back!</legend>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -45,8 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }     
         }
     ?>
+    <label for="email">E-mail</label>
     <input type="email" class="form-input" name="email" placeholder="Enter your e-mail" required><br>
+
+    <label for="password">Password</label>
     <input type="password" class="form-input" name="password" placeholder="Enter password" required><br>
+
     <small>Don't have an account? <a href="signup.php">Sign up here</a></small>
     <input type="submit" value="Log In" class="button submit">
 </form>

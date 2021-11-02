@@ -49,8 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<form action="" method="post">
-    <legend class="form-legend">Join us Today!</legend>
+<form class="form auth"action="" method="post">
+
+    <legend class="legend">Join us Today!</legend>
+
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             foreach ($errors as $errror) {
@@ -58,10 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }     
         }
     ?>
+    <label for="username">Username</label>
     <input type="username" class="form-input" name="username" placeholder="Enter your username"><br>
+
+    <label for="email">E-mail</label>
     <input type="email" class="form-input" name="email" placeholder="Enter your e-mail" required><br>
+
+    <label for="password">Password</label>
     <input type="password" class="form-input" name="password" placeholder="Enter password" required><br>
+
+    <label for="confirmation">Password confirmation</label>
     <input type="password" class="form-input" name="confirmation" placeholder="Enter password confirmation" required><br>
+    
     <small>Already have an account? <a href="login.php">Sign up here</a></small>
     <input type="submit" value="Sign up" class="button submit">
 </form>

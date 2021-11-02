@@ -8,5 +8,4 @@ function sanitise($data) {
 
     return $data;
 }
-
 ?>
