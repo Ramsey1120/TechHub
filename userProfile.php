@@ -1,8 +1,8 @@
 <?php
 require_once "include/header.php";
-require_once "inlcude/connect.php";
-require_once "inlcude/sanitise.php";
-phpinfo();
+require_once "include/connect.php";
+require_once "include/sanitise.php";
+
 $author_id = $GET["user"];
 
 $posts_no = "SELECT COUNT(userID) AS Num FROM post WHERE post.userID='$author_id'";

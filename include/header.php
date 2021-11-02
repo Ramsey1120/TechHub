@@ -29,12 +29,13 @@ if (isset($_SESSION["id"])) {
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <nav class="nav flex">
+    <nav class="nav flex">  
         <a href="../TechHub/index.php">TechHub</a>
         <a href="../TechHub/signup.php">Sign Up</a>
         <?php if (isset($_SESSION["id"])) { ?>
             <a href="../TechHub/profile.php">My Profile</a>
             <a href="TechHub/logout.php">Log Out</a>
+        <a id="current-user" href="../TechHub/userProfile.php?user='<?php  echo $id ?>'"><?php  echo $username ?></a>
         <?php } else { ?>
             <a href="../TechHub/login.php">Login</a>
         <?php } ?>

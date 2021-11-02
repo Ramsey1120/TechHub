@@ -15,11 +15,12 @@ while ($row = mysqli_fetch_array($post_result)) {
     $user_id = $row["userID"];
 
     $author = "SELECT username FROM user WHERE user.userID LIKE '$user_id'";
-    $author_result = mysqli_fetch_array($author_result);
+    $author_result = mysqli_query($conn, $author) or die(mysqli_query($error));
+    $post_author = mysqli_fetch_array($author_result);
 
     echo "<div class='post'><div class='postTitle'>" . $title . "</div>
             <div class='postCotent'> " . $content . "</div>
-            <a href='#' class='author'> " . $author["username"] . " <a/>
+            <a href='#' class='author'> " . $post_author["username"] . " <a/>
             <div class='date'> &middot" . $date_posted . " &middot</div></div>";            
 }
 

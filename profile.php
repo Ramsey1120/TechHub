@@ -1,10 +1,10 @@
 <?php
 require_once "include/header.php";
-require_once "inlcude/connect.php";
-require_once "inlcude/sanitise.php";
+require_once "include/connect.php";
+require_once "include/sanitise.php";
 
-$post_id = $GET["id"];
-$post = "SELECT * FROM post WHERE postID = '$post_id'";
+$post_id = $_GET["id"];
+$post = "SELECT * FROM user WHERE userID = '$post_id'";
 $post_result = mysqli_query($conn,$post) or die(mysqli_error($conn));
 
 
