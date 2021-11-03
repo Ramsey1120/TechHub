@@ -33,7 +33,6 @@ if (mysqli_num_rows($all_my_post_result) > 0) {
             </div>";
 
         } else {
-
             echo "
             <div class='post'>
                 <div class='postTitle'>" . ucfirst($row["title"]) . "</div>
@@ -54,3 +53,4 @@ if (mysqli_num_rows($all_my_post_result) > 0) {
 <?php } ?>
 
 
+<!-- CHANGE THIS OAGE UP COMPLETELY -->

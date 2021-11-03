@@ -33,7 +33,6 @@ if (isset($_SESSION["id"])) {
         <a href="../TechHub/index.php">TechHub</a>
         <a href="../TechHub/signup.php">Sign Up</a>
         <?php if (isset($_SESSION["id"])) { ?>
-            <a href="../TechHub/userProfile.php?user=<?php  echo $username ?>">My Profile</a>
             <a href="../TechHub/include/logout.php">Log Out</a>
             <a id="current-user" href="../TechHub/userProfile.php?user=<?php  echo $username ?>"><?php  echo $username ?></a>
         <?php } else { ?>

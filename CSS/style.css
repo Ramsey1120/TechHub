@@ -189,6 +189,10 @@ input[type="submit"]:hover {
     padding: 1em;
 }
 
+.auth {
+  width: 31.5%;
+}
+
 .legend {
     text-align: center;
     color: hsl(var(--clr-main));
@@ -196,7 +200,6 @@ input[type="submit"]:hover {
     font-size: 1.45rem;
     margin: .2em 0 1em;
 }
-
 
 .form-input {
     width: 100%;
@@ -261,19 +264,24 @@ small a:hover {text-decoration: underline;}
   color: hsl(var(--clr-main));
   border-bottom: solid 1px hsl(var(--clr-grey));
   width: 70%;
-  margin: 0 auto 1em;
+  margin: 0 auto .8em;
   padding: .2em;
   font-size: 1.775rem;
+  font-weight: normal;
 }
 
 .date {
-  margin: 1.2em 1em;
+  margin: 1em 1em 1.2em;
   padding-inline: 1em;
 }
 
 .author {
   font-size: 1.1rem;
   color: hsl( var(--clr-dark) / .8 );
+  display: block;
+    width: 25%;
+    margin-right: auto;
+    text-align: center;
 }
 
 .author b, .date b {
@@ -336,7 +344,7 @@ small a:hover {text-decoration: underline;}
 
 
 .profile {
-  width: 25%;
+  width: 30%;
   margin: 1em auto;
   font-size: 1.2rem;
 }
@@ -416,6 +424,11 @@ small a:hover {text-decoration: underline;}
     font-size: 1rem;
   }
 
+  .form {
+    width: 75%;
+    max-width: 475px;
+  }
+
   .post, .date {
     margin-inline: auto;
   }
@@ -425,10 +438,7 @@ small a:hover {text-decoration: underline;}
   }
 
   .author {
-    display: block;
-    width: 25%;
-    margin-inline: auto;
-    text-align: center;
+    margin-left: auto;
   }
 
   .addPost {
@@ -446,6 +456,26 @@ small a:hover {text-decoration: underline;}
 
 
 @media screen and (min-width: 768px) and (max-width: 1200px) { 
+  .aside {
+    display: none;
+  }
 
+  .post {
+    width: 95%;
+  }
+
+  .post .postContent {
+    margin-inline: auto;
+  }
+
+  .form {
+    width: 62.5%;
+    max-width: 595px;
+  }
+
+  .writePost {
+    width: 75%;
+  }
+  
 }
 

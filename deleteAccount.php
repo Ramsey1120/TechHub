@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <legend class="legend">Delete Account</legend>
 
-    <p class="del-warning">Are you sure you want to delete your account?<br>THIS ACTION CANNNOT BE UNDONE!</p>
+    <p class="del-warning">Are you sure you want to delete your account? This action will delete all your posts.
+    <br>THIS ACTION CANNNOT BE UNDONE!</p>
 
     <input class="button submit del" type="submit" value="Delete">
     

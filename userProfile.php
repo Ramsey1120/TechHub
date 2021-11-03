@@ -36,7 +36,7 @@ $all_posts = mysqli_fetch_array($post_no_result);
             if ($id === $user_id) {
 
                 echo "<a href='updateProfile.php' class='button viewPosts'>Update your details</a>";
-                echo "<a href='userPosts.php?user=" . $author_name ." class='button viewPosts'> View all my posts</a>";
+                echo "<a href='userPosts.php?user=" . $author_name ."' class='button viewPosts'> View all my posts</a>";
                 echo "<hr>";
                 echo "<a href='include/deleteAllposts.php' class='button viewPosts del'>Delete all my posts</a>";
                 echo "<a href='deleteAccount.php' class='button viewPosts del'> Delete my account</a>";
