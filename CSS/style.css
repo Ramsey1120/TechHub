@@ -118,6 +118,11 @@ input[type="submit"]:hover {
 /*  Utiity Classes */
 /* ------------------ */
 
+.flex {
+  gap: var(--gap,1em);
+  display: flex;
+}
+
 .button {
     padding: 1em 2em;
     background-color: hsl(var(--clr-main));
@@ -383,3 +388,64 @@ small a:hover {text-decoration: underline;}
   border: solid 1px hsl(var(--clr-red) / .85);
   padding: .5em;
 }
+
+
+@media screen and (min-width: 414px) and (max-width: 767px) { 
+
+  .button {
+    padding: .75em 1em;
+  }
+
+  .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-title {
+    font-size: 2.25rem;
+    padding: .5em 1em;
+    text-align: center;
+  }
+
+  .aside {
+    display: none;
+  }
+
+  .post, .form {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .post, .date {
+    margin-inline: auto;
+  }
+
+  .postTitle {
+    margin: 0.5em inherit 0.1em;
+  }
+
+  .author {
+    display: block;
+    width: 25%;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .addPost {
+    float: none;
+    margin-inline: auto;
+    width: max-content; 
+  }
+
+  .addPost > .button {
+    margin: 0 1em;
+  }
+
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1200px) { 
+
+}
+
