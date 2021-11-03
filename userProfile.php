@@ -26,15 +26,17 @@ $all_posts = mysqli_fetch_array($post_no_result);
 
     E-mail <input type="email" class="form-input" placeholder="<?php echo $user["email"] ?>" disabled><br>
 
-    <p>Number of posts written: <?php echo $all_posts["Num"]  ?> </p>
+    <p>Number of posts written: <b><?php echo $all_posts["Num"]  ?> </b></p>
 
-    <p>Joined Date: <?php echo date('d F Y', strtotime($user["date_joined"])) ?></p>
+    <p>Joined Date: <b><?php echo date('d F Y', strtotime($user["date_joined"])) ?></b></p>
 
     <?php  
         if ($_SESSION["id"] === $user_id) {
+            echo "<a href='updateProfile.php' class='button viewPosts'>Update your details</a>";
             echo "<a href='userPosts.php' class='button viewPosts'> View all my posts</a>";
-            echo "<a href='include/deleteAllposts.php' class='button viewPosts'>Delete all my posts</a>";
-            echo "<a href='deleteAccount.php' class='button viewPosts'> Delete my account</a>";
+            echo "<hr>";
+            echo "<a href='include/deleteAllposts.php' class='button viewPosts del'>Delete all my posts</a>";
+            echo "<a href='deleteAccount.php' class='button viewPosts del'> Delete my account</a>";
 
         } else {
             echo "<a href='userPosts.php' class='button viewPosts'> View all " . $user["username"] . "'s posts</a>";

@@ -2,7 +2,6 @@
 /* CSS Resets */
 /* ------------------ */
 
-
 /* Box Sizing */
 *,
 *::before,
@@ -119,23 +118,6 @@ input[type="submit"]:hover {
 /*  Utiity Classes */
 /* ------------------ */
 
-.flex {
-  display: flex;
-  gap: var(--gap, 1rem);
-}
-
-.grid {
-  display: grid;
-  gap: var(--gap, 1rem);
-}
-
-.container {
-  padding-inline: 2em; /* Arbitrary Value*/
-  margin-inline: auto;
-  width: var(--container-width,70%);
-  max-width: var(--max-width,80rem);
-}
-
 .button {
     padding: 1em 2em;
     background-color: hsl(var(--clr-main));
@@ -143,6 +125,14 @@ input[type="submit"]:hover {
     color: hsl(var(--clr-white));
     font-weight: bold;
     border-radius: 10px;
+
+    transition: transform 250ms ease-in-out;
+
+}
+
+.button:hover {
+  transition: transform 250ms ease-in-out;
+  transform: translateY(-3px);
 }
 
 
@@ -229,11 +219,6 @@ small a:hover {text-decoration: underline;}
 
 .submit {
   width: 100%;
-  transition: transform 250ms ease-in-out;
-}
-
-.submit:hover {
-  transform: translateY(-3px);
 }
 
 .error {
@@ -353,28 +338,28 @@ small a:hover {text-decoration: underline;}
 
 .profile p {
   text-align: center;
-  margin: 1em;
+  margin: 1.1em;
 }
 
 .profile .form-input {
   padding: 1em .5em;
+  margin: 0 0 1em;
+}
+
+.profile hr {
+  color: hsl(var(--clr-main));
+  width: 75%;
+  margin-inline: auto;
 }
 
 .viewPosts {
   display: block;
   text-align: center;
   margin: 1em 0;
-  padding: 1em .5em;
-  background-color: hsl(var(--clr-red) / .85);
-  border: solid 1px hsl(var(--clr-red) / .85);
+  padding: .75em .41em;
 }
 
-.viewPosts:nth-of-type(1) {
-  background-color: hsl(var(--clr-main));
-  border: solid 1px hsl(var(--clr-main));
-}
-
-.viewPosts:nth-of-type(3) {
+.viewPosts:last-of-type {
   margin-bottom: 0;
 }
 
