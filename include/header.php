@@ -29,7 +29,7 @@ if (isset($_SESSION["id"])) {
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <nav class="nav flex">  
+    <nav class="nav flex"> 
         <a href="../TechHub/index.php">TechHub</a>
         <a href="../TechHub/signup.php">Sign Up</a>
         <?php if (isset($_SESSION["id"])) { ?>

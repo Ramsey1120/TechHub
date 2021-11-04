@@ -140,6 +140,10 @@ input[type="submit"]:hover {
   transform: translateY(-3px);
 }
 
+.hamburger {
+  display: none;
+}
+
 
 /* ------------------ */
 /*  Main styling */
@@ -399,17 +403,28 @@ small a:hover {text-decoration: underline;}
 
 
 @media screen and (min-width: 414px) and (max-width: 767px) { 
-  /* creating an hamburger menu */
-
-
-  /* ------------------------------ */
   .button {
     padding: .75em 1em;
   }
 
   .nav {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     text-align: center;
+  }
+
+  .nav a {
+    font-size: .9rem;
+    flex-grow: 1;
+  }
+
+  .nav a:hover {
+    font-size: .9rem;
+  }
+
+  #current-user {
+    border-top: solid .5px hsl(var(--clr-white));
+    width: 100%;
   }
 
   .home-title {
@@ -428,7 +443,7 @@ small a:hover {text-decoration: underline;}
   }
 
   .form {
-    width: 75%;
+    width: 87.5%;
     max-width: 475px;
     margin-inline: auto;
   }
@@ -451,7 +466,8 @@ small a:hover {text-decoration: underline;}
 
   .addPost {
     float: none;
-    margin-inline: auto;
+    display: block;
+    margin: 1em auto;
     width: max-content; 
   }
 

@@ -20,7 +20,7 @@ if (isset($id)) {
 
         echo " <div class='addPost'>
         <a href='writePost.php' class='button'>Write a post</a>
-        <a href='include/deleteAllPost.php' class='button del'>Delete All My Posts</a>
+        <a href='include/deleteAllposts.php' class='button del'>Delete All My Posts</a>
         </div>";
 
         echo "<h1 class='home-title'>My posts</h1>";
