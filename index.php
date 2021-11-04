@@ -22,7 +22,7 @@ while ($row = mysqli_fetch_array($posts_query)) {
     echo "<article class='post'> 
     <p class='postTitle'>" . $title . "</p>" .
     "<a href='userProfile.php?user=" . $author["username"] . "' class='author'>Author: <b>" . $author["username"] ."</b></a>" .
-    "<div class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a>" . 
+    "<div class='postContent'>" . $content . "...<a href='post.php?id=" . $post_id . "'> Read More</a></div>" . 
     "<div class='date'>Uploaded the: <b>" . $date_posted . "</b></div></article>"; 
     
 }

@@ -3,19 +3,7 @@
 require_once "include/header.php";
 require_once "include/connect.php";
 
-if (isset($id)) { ?>
-
-    <div class="addPost">
-        <a href="writePost.php" class="button">Write a post</a>
-        <a href="include/deleteAllPost.php" class="button del">Delete All Posts</a>
-    </div>
-
-<?php } ?>
-
-<?php
-
 $author_name = $_GET["user"];
-
 
 $author = mysqli_query($conn,"SELECT userID FROM user WHERE username='$author_name'") 
 or die(mysqli_error($conn));
@@ -25,25 +13,31 @@ $author_id = $author_details["userID"];
 
 $all_posts = mysqli_query($conn, "SELECT * FROM post WHERE post.userID = '$author_id' ORDER BY date_posted DESC") 
 or die(mysqli_error($conn));
-$all_posts_result = mysqli_fetch_array($all_posts);
-
-
 
 if (isset($id)) {
 
-    if ($id === $author_details) {
+    if ($id === $author_id) {
+
+        echo " <div class='addPost'>
+        <a href='writePost.php' class='button'>Write a post</a>
+        <a href='include/deleteAllPost.php' class='button del'>Delete All My Posts</a>
+        </div>";
 
         echo "<h1 class='home-title'>My posts</h1>";
 
-        if (mysqli_num_rows($all_post_result) > 0) {
-            echo 
+        if (mysqli_num_rows($all_posts) > 0) {
+
+            while($row = mysqli_fetch_array($all_posts)) {
+
+                echo 
                 "<div class='post'>
-                    <div class='postTitle'>" . ucfirst($all_posts_result["title"]) . "</div>
-                    <div class='postContent'>" . ucfirst(substr($all_posts_result["content"], 0, 250)) . 
-                    "...<a href='post.php?id=" . $all_posts_result["postID"] . "'>Read More</a></div>
-                    <a class='button postDel' href='include/deletePost.php?id=" . $all_posts_result["postID"] . "'>Delete</a>
-                    <div class='date'>Uploaded the: " . substr($all_posts_result["date_posted"], 0, 10) . "</div>
+                    <div class='postTitle'>" . ucfirst($row["title"]) . "</div>
+                    <div class='postContent'>" . ucfirst(substr($row["content"], 0, 250)) . 
+                    "...<a href='post.php?id=" . $row["postID"] . "'>Read More</a></div>
+                    <a class='button postDel' href='include/deletePost.php?id=" . $row["postID"] . "'>Delete</a>
+                    <div class='date'>Uploaded the: " . substr($row["date_posted"], 0, 10) . "</div>
                 </div>";
+            }   
 
         } else {
 
@@ -58,13 +52,16 @@ if (isset($id)) {
     } else {
         echo "<h1 class='home-title'>" . $author_name . "'s posts</h1>";
 
-        echo "
-        <div class='post'>
-            <div class='postTitle'>" . ucfirst($all_posts_result["title"]) . "</div>
-            <div class='postContent'>" . ucfirst(substr($all_posts_result["content"], 0, 250)) . 
-            "...<a href='post.php?id=" . $all_posts_result["postID"] . "'>Read More</a></div>
-            <div class='date'>Uploaded the: <b>" . substr($all_posts_result["date_posted"], 0, 10) . "</b</div>
-        </div>";
+        while($row = mysqli_fetch_array($all_posts)) {
+
+            echo "
+            <div class='post'>
+                <div class='postTitle'>" . ucfirst($row["title"]) . "</div>
+                <div class='postContent'>" . ucfirst(substr($row["content"], 0, 250)) . 
+                "...<a href='post.php?id=" . $row["postID"] . "'>Read More</a></div>
+                <div class='date'>Uploaded the: <b>" . substr($row["date_posted"], 0, 10) . "</b</div>
+            </div>";
+        }
     }         
 
 } else {
@@ -73,13 +70,15 @@ if (isset($id)) {
 
         echo "<h1 class='home-title'>" . $author_name . "'s posts</h1>";
 
-        echo "
-        <div class='post'>
-            <div class='postTitle'>" . ucfirst($all_posts_result["title"]) . "</div>
-            <div class='postContent'>" . ucfirst(substr($all_posts_result["content"], 0, 250)) . 
-            "...<a href='post.php?id=" . $all_posts_result["postID"] . "'>Read More</a></div>
-            <div class='date'>Uploaded the: <b>" . substr($all_posts_result["date_posted"], 0, 10) . "</b</div>
-        </div>";
+        while($row = mysqli_fetch_array($all_posts)) {
+            echo "
+            <div class='post'>
+                <div class='postTitle'>" . ucfirst($row["title"]) . "</div>
+                <div class='postContent'>" . ucfirst(substr($row["content"], 0, 250)) . 
+                "...<a href='post.php?id=" . $row["postID"] . "'>Read More</a></div>
+                <div class='date'>Uploaded the: <b>" . substr($row["date_posted"], 0, 10) . "</b</div>
+            </div>";
+        }
 
     } else {
 

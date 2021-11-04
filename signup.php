@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $existing_username =  mysqli_query($conn,"SELECT * FROM user WHERE username='$username'") or die(mysqli_error($conn));
     $existing_email = mysqli_query($conn,"SELECT * FROM user WHERE email='$e_mail'") or die(mysqli_error($conn));
-    
+
 
     if (mysqli_num_rows($existing_username) > 0) { $errors[] = "Username already taken.";}
 
@@ -27,10 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (strlen($password) < 8) {$errors[] = "Password must be at least 8 characters long.";}
     
-    if (!($password === $confirmation)) {
-        $errors[] = "Password and password confirmation do not match.";
-    }
-
+    if (!($password === $confirmation)) {$errors[] = "Password and password confirmation do not match.";}
 
     if (empty($errors)) {
         $password = password_hash($password, PASSWORD_BCRYPT);

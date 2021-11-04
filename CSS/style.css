@@ -399,7 +399,10 @@ small a:hover {text-decoration: underline;}
 
 
 @media screen and (min-width: 414px) and (max-width: 767px) { 
+  /* creating an hamburger menu */
 
+
+  /* ------------------------------ */
   .button {
     padding: .75em 1em;
   }
@@ -427,6 +430,7 @@ small a:hover {text-decoration: underline;}
   .form {
     width: 75%;
     max-width: 475px;
+    margin-inline: auto;
   }
 
   .post, .date {
@@ -435,6 +439,10 @@ small a:hover {text-decoration: underline;}
 
   .postTitle {
     margin: 0.5em inherit 0.1em;
+  }
+
+  .postContent {
+    margin-bottom: 3em;
   }
 
   .author {
@@ -449,6 +457,15 @@ small a:hover {text-decoration: underline;}
 
   .addPost > .button {
     margin: 0 1em;
+  }
+
+  .postDel {
+    display: block;
+    width: max-content;
+  }
+
+  .date {
+    margin-top: 0;
   }
 
 

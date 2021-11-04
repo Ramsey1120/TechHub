@@ -15,22 +15,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "This e-mail does not exist. Try again.";
     } else {
         
-        while ($row = mysqli_fetch_array($existing_email)) {
+        $row = mysqli_fetch_array($existing_email);
 
-            if (!password_verify($password, $row["userpass"])) {
-                $errors[] = "Invalid password. Try again.";
-            } else {
-                session_start();
+        if (!password_verify($password, $row["userpass"])) {
+            $errors[] = "Invalid password. Try again.";
+        } else {
+            session_start();
 
-                $_SESSION["id"] = $row["userID"];
-                $_SESSION["username"] = $row["username"];
-                $_SESSION["email"] = $row["email"];
-                $_SESSION["signup_date"] = date('d f Y', strtotime($row["date_joined"]));
+            $_SESSION["id"] = $row["userID"];
+            $_SESSION["username"] = $row["username"];
+            $_SESSION["email"] = $row["email"];
+            $_SESSION["signup_date"] = date('d f Y', strtotime($row["date_joined"]));
 
-                header("Location: index.php");
-                mysqli_close($conn);
-            }
+            header("Location: index.php");
+            mysqli_close($conn);
         }
+        
     }
 } ?> 
 
