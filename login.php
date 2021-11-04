@@ -9,14 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $errors = [];
 
-    $existing_email = "SELECT * FROM user WHERE email='$e_mail'";
-    $existing_email_result = mysqli_query($conn,$existing_email) or die(mysqli_error($conn));
+    $existing_email = mysqli_query($conn,"SELECT * FROM user WHERE email='$e_mail'") or die(mysqli_error($conn));
 
-    if (mysqli_num_rows($existing_email_result) === 0) {
+    if (mysqli_num_rows($existing_email) === 0) {
         $errors[] = "This e-mail does not exist. Try again.";
     } else {
         
-        while ($row = mysqli_fetch_array($existing_email_result)) {
+        while ($row = mysqli_fetch_array($existing_email)) {
 
             if (!password_verify($password, $row["userpass"])) {
                 $errors[] = "Invalid password. Try again.";
@@ -35,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } ?> 
 
-<form  class="form auth" action="" method="post">
+<form class="form auth" method="post">
 
     <legend class="legend">Welcome Back!</legend>
 
@@ -46,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }     
         }
     ?>
+    
     <label for="email">E-mail</label>
     <input type="email" class="form-input" name="email" placeholder="Enter your e-mail" required><br>
 

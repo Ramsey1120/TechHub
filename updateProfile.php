@@ -12,34 +12,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = sanitise($_POST["password"]);
     $confirmation = sanitise($_POST["confirmation"]);
 
-    $email_check = "SELECT * FROM user WHERE email= '$e_mail' AND email <> '$email'";
-    $email_check_result = mysqli_query($conn,$email_check) or die(mysqli_error($conn));
+    $email_check_query = mysqli_query($conn,"SELECT * FROM user WHERE email= '$e_mail' AND email <> '$email'") 
+    or die(mysqli_error($conn));
 
-    $user_check = "SELECT * FROM user WHERE username= '$old_username' AND email <> '$username'";
-    $user_check_result = mysqli_query($conn,$user_check) or die(mysqli_error($conn));
+    $user_check_query = mysqli_query($conn,"SELECT * FROM user WHERE username= '$old_username' AND email <> '$username'") 
+    or die(mysqli_error($conn));
 
-    $password_check = "SELECT userpass FROM user WHERE userID = '$id'";
-    $password_check_result = mysqli_query($conn,$password_check) or die(mysqli_error($conn));
-    $user_password = mysqli_fetch_array($password_check_result);
+    $password_check_query = mysqli_query($conn,"SELECT userpass FROM user WHERE userID = '$id'") or die(mysqli_error($conn));
+    $user_password = mysqli_fetch_array($password_check_query);
 
     $errors = [];
-
-    if (strlen($username) < 3 or strlen($username) > 35) {
-        $errors[] = "New username must be between 3 and 35 characters long.";
-    }
-
-    if (strlen($e_mail) < 8 or strlen($email) > 100) {
-        $errors[] = "New e-mail must be between 8 and 100 characters long.";
-    }
-
-    if (mysqli_num_rows($email_check_result) > 0) {
-        $errors[] = "Email already taken. Try again.";
-    }
-
-    if (mysqli_num_rows($user_check_result) > 0) {
-        $errors[] = "Username already taken. Try again.";
-    }
     
+    if (mysqli_num_rows($user_check_query) > 0) {$errors[] = "Username already taken. Try again.";}
+
+    if (mysqli_num_rows($email_check_query) > 0) {  $errors[] = "Email already taken. Try again.";}
+    
+    if (strlen($username) < 3 or strlen($username) > 35) {$errors[] = "New username must be between 3 and 35 characters long.";}
+
+    if (strlen($e_mail) < 8 or strlen($email) > 100) {$errors[] = "New e-mail must be between 8 and 100 characters long.";}
+
     if (!password_verify($password,$user_password["userpass"])) {
         $errors[] = "Invalid password. Try again.";
     } else {
@@ -50,13 +41,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        $udpate = "UPDATE user SET username ='$username', email = '$e_mail' WHERE userID = '$id'";
-        $udpate_result = mysqli_query($conn,$udpate) or die(mysqli_error($conn));
+        $udpate_query = mysqli_query($conn,"UPDATE user SET username ='$username', email = '$e_mail' WHERE userID = '$id'") 
+        or die(mysqli_error($conn));
         session_destroy();
         header("Location: login.php");
     }
+
     mysqli_close($conn);
-} ?>
+
+} 
+?>
 
 <form class="form profile" method="post">
 

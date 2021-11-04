@@ -5,15 +5,15 @@ require_once "include/sanitise.php";
 
 $author_name = $_GET["user"];
 
-$user_details = "SELECT userID,username,email,date_joined FROM user WHERE user.username='$author_name'";
-$user_details_result = mysqli_query($conn,$user_details) or die(mysqli_error($conn));
-$user = mysqli_fetch_array($user_details_result);
+$user_details = mysqli_query($conn,"SELECT userID,username,email,date_joined FROM user WHERE user.username='$author_name'") 
+or die(mysqli_error($conn));
+$user = mysqli_fetch_array($user_details);
 
 $user_id = $user["userID"];
 
-$posts_no = "SELECT COUNT(userID) AS Num FROM post WHERE post.userID='$user_id'";
-$post_no_result = mysqli_query($conn,$posts_no) or die(mysqli_error($conn));
-$all_posts = mysqli_fetch_array($post_no_result);
+$post_count = mysqli_query($conn,"SELECT COUNT(userID) AS Num FROM post WHERE post.userID='$user_id'") 
+or die(mysqli_error($conn));
+$all_posts = mysqli_fetch_array($post_count);
 
 
 ?>

@@ -5,6 +5,7 @@ require_once "include/connect.php";
 require_once "include/sanitise.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $errors = [];
 
     $title = sanitise($_POST["title"]);
@@ -15,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (strlen($content) < 5 or strlen($content) > 2500) {$errors[] = "Your post must be between 5 and 25000 characters long";}
 
     if (empty($errors)) {
-    $now = date("Y-m-d H:i:s");
-        $insert_post = "INSERT INTO post (title,content,userID,date_posted) VALUES ('$title','$content','$id','$now')";
-        $insert_post_result = mysqli_query($conn,$insert_post) or die(mysqli_error($conn));
+        $now = date("Y-m-d H:i:s");
+        $insert_post_query = mysqli_query($conn, "INSERT INTO post (title,content,userID,date_posted) VALUES ('$title','$content','$id','$now')") 
+        or die(mysqli_error($conn));
 
         header("Location: index.php");
         mysqli_close($conn);

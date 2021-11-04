@@ -13,24 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $errors = [];
 
-    $existing_email = "SELECT * FROM user WHERE email='$e_mail'";
-    $existing_email_result = mysqli_query($conn,$existing_email) or die(mysqli_error($conn));
+    $existing_username =  mysqli_query($conn,"SELECT * FROM user WHERE username='$username'") or die(mysqli_error($conn));
+    $existing_email = mysqli_query($conn,"SELECT * FROM user WHERE email='$e_mail'") or die(mysqli_error($conn));
+    
 
-    if (strlen($username) < 3 or strlen($username) > 35) {
-        $errors[] = "Username must be between 3 and 35 characters long";
-    }
+    if (mysqli_num_rows($existing_username) > 0) { $errors[] = "Username already taken.";}
 
-    if (strlen($e_mail) < 8 or strlen($e_mail) > 100) {
-        $errors[] = "Email must be between 8 and 100 characters long";
-    }
+    if (mysqli_num_rows($existing_email) > 0) { $errors[] = "Email already taken.";}
 
-    if (mysqli_num_rows($existing_email_result) > 0) {
-        $errors[] = "Email already taken. Try again.";
-    }
+    if (strlen($username) < 3 or strlen($username) > 35) { $errors[] = "Username must be between 3 and 35 characters long";}
 
-    if (strlen($password) < 8) {
-        $errors[] = "Password must be at least 8 characters long.";
-    }
+    if (strlen($e_mail) < 8 or strlen($e_mail) > 100) { $errors[] = "Email must be between 8 and 100 characters long";}
+
+    if (strlen($password) < 8) {$errors[] = "Password must be at least 8 characters long.";}
     
     if (!($password === $confirmation)) {
         $errors[] = "Password and password confirmation do not match.";
@@ -50,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<form class="form auth"action="" method="post">
+<form class="form auth" method="post">
 
     <legend class="legend">Join us Today!</legend>
 
@@ -61,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }     
         }
     ?>
+
     <label for="username">Username</label>
     <input type="username" class="form-input" name="username" placeholder="Enter your username"><br>
 
@@ -75,6 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <small>Already have an account? <a href="login.php">Log In here</a></small>
     <input type="submit" value="Sign up" class="button submit">
+    
 </form>
 </body>
 </html>

@@ -3,25 +3,21 @@
 require_once "include/header.php"; 
 require_once "include/connect.php";
 
-if (isset($id)) {
-    echo "<a class='button addPost' href='writePost.php'>Write a post</a>";
-}
+if (isset($id)) {echo "<a class='button addPost' href='writePost.php'>Write a post</a>";}
 
-$all_posts = "SELECT * FROM post ORDER BY date_posted DESC";
-$all_posts_result = mysqli_query($conn, $all_posts) or die(mysqli_error($conn));
+$posts_query = mysqli_query($conn, "SELECT * FROM post ORDER BY date_posted DESC") or die(mysqli_error($conn));
 
 echo "<h1 class='home-title'>TechHub Home</h1>";
 
-while ($row = mysqli_fetch_array($all_posts_result)) {
+while ($row = mysqli_fetch_array($posts_query)) {
     $post_id = $row["postID"];
     $title  = ucfirst($row["title"]);
     $content = ucfirst(substr($row["content"],0,250));
     $date_posted = substr($row["date_posted"],0,10);
     $user_id = $row["userID"];
     
-    $post_author = "SELECT username FROM user WHERE userID='$user_id'";
-    $post_author_result = mysqli_query($conn,$post_author);
-    $author = mysqli_fetch_array($post_author_result);
+    $post_author_query = mysqli_query($conn,"SELECT username FROM user WHERE userID='$user_id'");
+    $author = mysqli_fetch_array($post_author_query);
 
     echo "<article class='post'> 
     <p class='postTitle'>" . $title . "</p>" .
