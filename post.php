@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_array($post_result)) {
 
     echo "<div class='post fullPost'>
     <div class='postTitle'>" . $title . "</div>
-    <a href='post.php?user=" . $post_author["username"] . "' class='author'>Author: <b>" . $post_author["username"] . "</a></b>
+    <a href='userProfile.php?user=" . $post_author["username"] . "' class='author'>Author: <b>" . $post_author["username"] . "</a></b>
             <div class='postContent'> " . $content . "</div>
             <div class='date'>Uploaded the: <b>" . $date_posted . "</b></div></div>";            
 }
